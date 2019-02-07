@@ -1,0 +1,55 @@
+<html>
+	<script type="text/javascript">
+		var cnt=1;
+		function add(a){
+			var br=document.createElement("br");
+			var div=document.createElement("div");
+			var addTextBox=document.createElement("input");
+			var addButton=document.createElement("button");
+			var remButton=document.createElement("button");
+			var t = a.parentNode;
+
+			div.setAttribute("id","mydiv"+cnt);
+			addTextBox.setAttribute("name","txtinpt");
+			addButton.setAttribute("onclick","add(this)");
+			remButton.setAttribute("onclick","del(this)");
+			addButton.innerHTML="+";
+			remButton.innerHTML="-";
+			div.appendChild(br);
+			div.appendChild(addTextBox);
+			div.appendChild(addButton);
+			div.appendChild(remButton);
+			t.appendChild(div);
+			insertAfter(div,t);
+			cnt++;
+		}	
+
+		function del(a){
+			var t= a.parentNode;
+			t.removeChild(t.childNodes[0]);  
+			t.removeChild(t.childNodes[1]);  
+			t.removeChild(t.childNodes[0]);
+			t.removeChild(t.childNodes[0]);
+		}
+
+		function insertAfter(newNode, referenceNode) {
+		    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+		}
+
+		function showData(){
+			  var lt = document.getElementsByName("txtinpt").length;
+			  alert("Div:"+lt);
+		}
+	</script>
+
+	<body>
+		<div id="temp">
+			<input type="text" name="txtinpt"i d="txtinpt" placeholder="Enter Text">
+			<input type="button" id="myAddBtn" value="+" title="Add" onclick="add(this)">
+		</div>
+		<br>
+		<div>
+			<input type="button" name="Submit" onclick="showData()" value="Show">
+		</div>
+	</body>
+</html>

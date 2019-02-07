@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>OOP Concepts</title>
+	<script type="text/javascript">
+		alert("Let's Check Video Calling is Supported or Not...!!!");
+		var RamSize;
+		var RomSize;
+		var FrntCam;
+		var NetConn;
+		var RamS;
+		var RomS;
+		var CamS;
+		var NetC;
+
+		class Phone {
+
+			constructor(id){
+				this.id=id;
+				//alert(id);
+			}
+
+			Call(){
+				//alert("Video Call not Supported");
+			}
+		}
+
+		class SmartPhone extends Phone{
+  		  	
+  		  	constructor(name,id){
+  		  		super(id);
+  		  		this.name=name;
+  		  		//alert(name);
+  		  	}
+
+  		  	Call(){
+  		  		super.Call();
+  		  		//alert("Video Call Supported");
+  		  	}
+
+  		  	BasicConfg(){
+  		  		RamS=smartPhoneObj.RamSizeValidation();
+  		  		RomS=smartPhoneObj.RomSizeValidation();
+  		  		CamS=smartPhoneObj.CameraSpec();
+  		  		NetC=smartPhoneObj.NetConnectivity();
+  		  	}
+
+  		  	RamSizeValidation(){
+  		  		var ramSize=prompt("How Much RAM [3/4 GB]?");
+  		    	if(ramSize>=3 && ramSize<=4){
+  		    		RamSize=ramSize;
+  		    		return true;
+  		    	}
+  		    	else{
+  		    		alert("Invalid Ram Size");
+  		    		this.RamSizeValidation();
+  		    	}
+  		  	}
+
+  		  	RomSizeValidation(){
+  		  		var romSize=prompt("How Much ROM [32/64 GB]?");
+  		    	if(romSize==32 || romSize==64){
+  		    		RomSize=romSize;
+  		    		return true;
+  		    	}
+  		    	else{
+  		  			alert("Invalid Rom Size");
+  		  			this.RomSizeValidation();
+  		    	}
+  		  	}
+
+  		  	CameraSpec(){
+  		  		var frntCam=prompt("Having a Fornt Camera [Yes/No]?");
+  		  		if(frntCam=="Yes" || frntCam=="yes" || frntCam=="Y" || frntCam=="y") {
+  		    		FrntCam=frntCam;
+  		    		return true;
+  		    	}
+  		    	else{
+  		  			FrntCam="No";
+  		    	}	
+  		  	}
+
+  		  	NetConnectivity(){
+  		  		var netConn=prompt("Phone having a 3G/4G Net Connection [Yes/No]?");
+  		  		if(netConn=="Yes" || netConn=="yes" || netConn=="Y" || netConn=="y") {
+  		    		NetConn=netConn;
+  		    		return true;
+  		    	}
+  		    	else{
+  		  			NetConn="No";
+  		    	}
+  		  	}
+  		}
+
+  		let smartPhoneObj= new SmartPhone("MyChildClass","MyParentClass");
+  		smartPhoneObj.BasicConfg();
+
+	</script>
+</head>
+<body>
+	<h1>Basic Configurations</h1>
+	<h2 id="TxtRam"></h2>
+	<h2 id="TxtRom"></h2>
+	<h2 id="TxtCam"></h2>
+	<h2 id="TxtNet"></h2>
+	<h2 id="TxtVdo"></h2>
+	<script type="text/javascript">
+		if(RamS && RomS && CamS && NetC){
+  			document.getElementById("TxtRam").innerHTML="Ram: "+RamSize+" GB";
+			document.getElementById("TxtRom").innerHTML="Rom: "+RomSize+" GB";
+			document.getElementById("TxtCam").innerHTML="Camera: "+ FrntCam;
+			document.getElementById("TxtNet").innerHTML="NetConnectivity: "+ NetConn;
+			document.getElementById("TxtVdo").innerHTML="Video Call: "+"Supported";
+		}
+		else{
+			document.getElementById("TxtRam").innerHTML="Ram: "+RamSize+" GB";
+			document.getElementById("TxtRom").innerHTML="Rom: "+RomSize+" GB";
+			document.getElementById("TxtCam").innerHTML="Camera: "+ FrntCam;
+			document.getElementById("TxtNet").innerHTML="NetConnectivity: "+ NetConn;
+			document.getElementById("TxtVdo").innerHTML="Video Call: "+"Not Supported";
+  		}
+	</script>
+</body>
+</html>

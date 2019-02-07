@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<script>
+		let cnt=1;
+    	let myArray=[1,
+    		2,
+    		3,
+    		"Hello",
+    		{
+    			a:{
+    				b:function(){
+    					return(a+b);
+    				},
+    				c:"akshay",
+    				d:18
+    			}
+    		},
+    		4,
+    		"MyString",
+    		{
+    			fun:{
+    				d:function() {
+    					return(fun-d);
+    				}
+    			}
+    		},
+    		"EOF"   		
+       	];
+
+    	alert("Loop");
+    	var obj={};
+    	let res=[];
+
+    	for (let i = 0; i < myArray.length; i++) {
+  			if( typeof (myArray[i]) == "number" ){
+  				obj["key"]=myArray[i];
+  				obj["count"]=(myArray[i]+cnt);
+  				cnt++;
+  				res.push(obj);
+  				obj={};
+  			}
+  			else if( typeof (myArray[i]) == "string"){
+  				obj["key"]=myArray[i];
+  				obj["name"]=myArray[i];
+  				res.push(obj);
+  				obj={};
+  			}
+  			else if( typeof (myArray[i]) == "object"){
+  				for(let a in myArray[i]){
+  					obj["key"]=a;
+  					for(let l  in myArray[i][a]){		
+  						obj[l]=myArray[i][a][l];
+  					}
+  					res.push(obj);
+  					obj={};
+  				}
+  			}			
+		}
+		alert(JSON.stringify(res));
+		//console.log(res);
+
+  	</script>
+</head>
+
+<body>
+	
+</body>
+
+</html>
